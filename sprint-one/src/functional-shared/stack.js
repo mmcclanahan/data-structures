@@ -4,9 +4,7 @@ var Stack = function() {
   var instance = {
     storage: {}
   };
-  instance.push = stackMethods.push;
-  instance.pop = stackMethods.pop;
-  instance.size = stackMethods.size;
+  _.extend(instance, stackMethods);
   return instance;
 };
 
@@ -29,5 +27,5 @@ stackMethods.size = function() {
   var size = Object.keys(this.storage).length;
   return size;
 };
-
+//put storage inside the instance object used this to refer to instance
 
