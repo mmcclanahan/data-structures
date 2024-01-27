@@ -21,7 +21,6 @@ Graph.prototype.contains = function(node) {
     };
   };
   return false;
-
 };
 
 // Removes a node key from the graph and removes it from other keys values
@@ -51,10 +50,13 @@ Graph.prototype.hasEdge = function(fromNode, toNode) {
 
 // Connects two nodes in a graph by adding an edge between them.
 Graph.prototype.addEdge = function(fromNode, toNode) {
-
+  //if (Array.isArray(this.fromNode) && Array.isArray(this.toNode)) {
+    //debugger;
+    console.log(this[fromNode]);
     this[fromNode].push(toNode);
+    console.log(this[fromNode]);
     this[toNode].push(fromNode);
-
+  //}
 };
 
 // Remove an edge between any two specified (by value) nodes.
@@ -91,9 +93,19 @@ Graph.prototype.removeEdge = function(fromNode, toNode) {
 // Pass in a callback which will be executed on each node of the graph.
 Graph.prototype.forEachNode = function(cb) {
   for (var key in this) {
-    if (typeof this[key] !== 'function') {
+    if (Array.isArray(this[key])) {
       cb(key);
     }
   }
-  };
+};
 
+/*
+ * Complexity: What is the time complexity of the above functions?
+ */
+
+// vertices aka nodes
+  //edges aka arcs that connect them
+//{node: node, edge: [object]}
+
+//node 1  -- node 2
+      //  -- node 3

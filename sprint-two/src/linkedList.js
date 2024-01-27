@@ -1,3 +1,4 @@
+
 var LinkedList = function() {
   var list = {};
   list.head = null; //linkedListNode instance
@@ -8,11 +9,11 @@ var LinkedList = function() {
     //check head for null
     //debugger;
     var addToData = function(obj) {
-      if (obj.next === null) {
-        obj.next = Node(value);
-      } else {
+      if (typeof obj.next === 'object' && obj.next !== null) {
         addToData(obj.next);
-      }
+      } else {
+        obj.next = list.tail; //
+      };
     };
     if (list.head === null) {
       var firstItem = Node(value);
@@ -20,9 +21,9 @@ var LinkedList = function() {
       list.tail = firstItem;
     }  else {
       //first put tail into head
-      addToData(list.head);
-      //reassign tail
       list.tail = Node(value);
+      addToData(list.head);
+      //re
     }
   };
 
@@ -31,7 +32,7 @@ var LinkedList = function() {
       //set a variable = value
       var deletedNodeValue = list.head.value;
       //set list.head = list.head.next
-      list.head = list.head.next;
+      list.head = list.head.next
       //return variable
       return deletedNodeValue;
     } else {
@@ -40,14 +41,19 @@ var LinkedList = function() {
   };
 
   list.contains = function(target) {
-    // iterate through the list for target
+    // check head for value
+    // if true return
+    // recursively check next.value
     var ifContains = function (obj, target) {
       if (obj.value === target) {
         return true;
-      } else if (obj.next !== null) {
-        return ifContains(obj.next, target);
-      } else {
-      return false;}
+      };
+      if (obj.next === null) {
+        return false;
+      }
+      //if (typeof obj.next === 'object') {
+      return ifContains(obj.next, target);
+      //};
     };
     return ifContains(list.head, target);
   };
@@ -64,15 +70,13 @@ var Node = function(value) {
   return node;
 };
 
-var Node = function(value) {
-  var node = {};
-
-  node.value = value;
-  node.next = null;
-
-  return node;
-};
-
 /*
  * Complexity: What is the time complexity of the above functions?
  */
+
+//list = {head: null, tail: null, node{value1: value, next: null}} null until add another tail
+//addtoTail would put node in end of list
+  //if its
+//add another to tail makes it tail node
+//node = {value: 1, next: null}
+//head: node, node2, node3, tail: node
